@@ -1,0 +1,293 @@
+/* Estilos Generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f5f0; /* Color de fondo cálido */
+    color: #333;
+}
+
+h1, h2 {
+    font-family: 'Roboto Slab', serif;
+    color: #4a2c2a; /* Color marrón oscuro para títulos */
+}
+
+.header {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    background-color: #ff6f61; /* Color naranja rojizo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Necesario para que z-index funcione */
+    z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+}
+
+.items {
+    margin-top: 10px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.items a { 
+    display: none;
+    padding: 10px;
+    text-decoration: none;
+    color: #fffcfc;
+    background-color: #ff6f61;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    top: 95%;
+    z-index: 1001;
+}
+
+.items a:hover {
+    background-color: #e27676;
+    transform: scale(1.05);
+}
+
+.items:hover a {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenido Principal */
+.contenido {
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    width: max-content; /* Ancho máximo para el contenido del carrusel */
+    animation: scroll 20s linear infinite; /* Animación de desplazamiento */
+}
+
+.carousel .card {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 150px;
+    margin-right: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.carousel .card:hover {
+    transform: scale(1.05);
+}
+
+.carousel .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel .descripcion {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(202, 111, 111, 0.7);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Animación de desplazamiento automático */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Instructores */
+.instructors {
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.instructors .carousel {
+    display: flex;
+    width: max-content; /* Ancho máximo para el contenido del carrusel */
+    animation: scroll 20s linear infinite; /* Animación de desplazamiento */
+}
+
+/* Contenedor de recetas */
+.conten_recetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos para cada receta */
+.receta {
+    flex: 1 1 calc(20% - 20px); /* 5 cards por línea en pantallas grandes */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Media Queries para hacerlo responsive */
+@media (max-width: 1200px) {
+    .receta {
+        flex: 1 1 calc(25% - 20px); /* 4 cards por línea en pantallas medianas */
+    }
+}
+
+@media (max-width: 992px) {
+    .receta {
+        flex: 1 1 calc(33.33% - 20px); /* 3 cards por línea en tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .receta {
+        flex: 1 1 calc(50% - 20px); /* 2 cards por línea en móviles grandes */
+    }
+}
+
+@media (max-width: 576px) {
+    .receta {
+        flex: 1 1 calc(100% - 20px); /* 1 card por línea en móviles pequeños */
+    }
+}
+
+.receta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.receta img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.receta p {
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    margin: 0; /* Elimina el margen predeterminado de <p> */
+}
+
+.receta .boton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6f61; /* Color naranja rojizo */
+    color: white;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.receta .boton:hover {
+    background-color: #e65a50; /* Color más oscuro al hacer hover */
+}
+
+.recetas {
+    height: auto; /* Altura automática para adaptarse al contenido */
+    width: 100%;
+    margin: 0 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    height: auto; /* Altura automática para adaptarse al contenido */
+    background-color: #f4f4f4; /* Gris claro */
+    padding: 40px 20px;
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-section:hover {
+    transform: translateY(-10px); /* Efecto de elevación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.footer-section h3 {
+    font-family: 'Roboto Slab', serif;
+    color: #4a2c2a; /* Marrón oscuro */
+    font-size: 1.5em;
+}
+
+.footer-section p {
+    font-family: 'Poppins', sans-serif;
+    color: #666;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ff6f61; /* Naranja rojizo al hacer hover */
+}
+
+/* Estilos para los íconos de redes sociales */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: scale(1.2); /* Efecto de zoom al hacer hover */
+}
